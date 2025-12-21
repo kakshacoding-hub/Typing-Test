@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Races - Typing Speed Game</title>
+    <link rel="stylesheet" href="race-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-background">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🏎️</span>
+                <span class="logo-text">TYPE RACES</span>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Best WPM</span>
+                    <span class="stat-value" id="best-wpm">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Races Won</span>
+                    <span class="stat-value" id="races-won">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Start Screen -->
+        <div class="start-screen" id="start-screen">
+            <div class="start-content">
+                <h1 class="game-title">
+                    <span class="title-main">TYPE RACES</span>
+                    <span class="title-sub">Race to victory with your keyboard!</span>
+                </h1>
+                
+                <div class="difficulty-selector">
+                    <h3>Select Difficulty</h3>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn" data-difficulty="easy">
+                            <span class="diff-icon">🐢</span>
+                            <span class="diff-name">Easy</span>
+                            <span class="diff-desc">Short words</span>
+                        </button>
+                        <button class="difficulty-btn active" data-difficulty="medium">
+                            <span class="diff-icon">🚗</span>
+                            <span class="diff-name">Medium</span>
+                            <span class="diff-desc">Mixed text</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="hard">
+                            <span class="diff-icon">🚀</span>
+                            <span class="diff-name">Hard</span>
+                            <span class="diff-desc">Complex sentences</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="start-btn" id="start-btn">
+                    <span class="btn-text">START RACE</span>
+                    <span class="btn-icon">▶</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-screen" id="game-screen">
+            <!-- Race Track -->
+            <div class="race-track">
+                <!-- Player Lane -->
+                <div class="race-lane player-lane">
+                    <div class="lane-label">YOU</div>
+                    <div class="race-car player-car" id="player-car">
+                        <div class="car-body">🏎️</div>
+                        <div class="car-trail"></div>
+                    </div>
+                    <div class="finish-line">🏁</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="player-progress"></div>
+                    </div>
+                </div>
+
+                <!-- Opponent Lanes -->
+                <div class="race-lane opponent-lane">
+                    <div class="lane-label">BOT 1</div>
+                    <div class="race-car opponent-car" id="opponent1-car">
+                        <div class="car-body">🚗</div>
+                        <div class="car-trail"></div>
+                    </div>
+                    <div class="finish-line">🏁</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill opponent-progress" id="opponent1-progress"></div>
+                    </div>
+                </div>
+
+                <div class="race-lane opponent-lane">
+                    <div class="lane-label">BOT 2</div>
+                    <div class="race-car opponent-car" id="opponent2-car">
+                        <div class="car-body">🚙</div>
+                        <div class="car-trail"></div>
+                    </div>
+                    <div class="finish-line">🏁</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill opponent-progress" id="opponent2-progress"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing Area -->
+            <div class="typing-area">
+                <div class="stats-bar">
+                    <div class="stat-box">
+                        <span class="stat-label">WPM</span>
+                        <span class="stat-value" id="wpm">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Accuracy</span>
+                        <span class="stat-value" id="accuracy">100%</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Time</span>
+                        <span class="stat-value" id="timer">0s</span>
+                    </div>
+                </div>
+
+                <div class="text-display" id="text-display">
+                    <span class="countdown" id="countdown">3</span>
+                </div>
+
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        class="typing-input" 
+                        id="typing-input" 
+                        placeholder="Get ready to type..." 
+                        disabled
+                    >
+                </div>
+
+                <button class="restart-btn" id="restart-btn">
+                    <span>↻ Restart</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="results-screen" id="results-screen">
+            <div class="results-content">
+                <div class="results-trophy" id="results-trophy">
+                    <div class="trophy-icon">🏆</div>
+                </div>
+                
+                <h2 class="results-title" id="results-title">Victory!</h2>
+                
+                <div class="results-stats">
+                    <div class="result-stat">
+                        <span class="result-label">Words Per Minute</span>
+                        <span class="result-value" id="final-wpm">0</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-label">Accuracy</span>
+                        <span class="result-value" id="final-accuracy">0%</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-label">Time Taken</span>
+                        <span class="result-value" id="final-time">0s</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-label">Position</span>
+                        <span class="result-value" id="final-position">1st</span>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="result-btn primary" id="race-again-btn">
+                        <span>🏁 Race Again</span>
+                    </button>
+                    <button class="result-btn secondary" id="change-difficulty-btn">
+                        <span>⚙️ Change Difficulty</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="race-game.js"></script>
+</body>
+</html>
