@@ -1,0 +1,26 @@
+{
+    "name": "typing-test-app",
+    "version": "1.0.0",
+    "description": "A fully functional typing test website with backend API",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "keywords": [
+        "typing",
+        "test",
+        "wpm",
+        "typing-speed"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5",
+        "sql.js": "^1.10.2",
+        "bcryptjs": "^2.4.3",
+        "express-session": "^1.17.3"
+    }
+}

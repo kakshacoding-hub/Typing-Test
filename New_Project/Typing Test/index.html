@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Test and improve your typing speed with our professional typing test. Track your WPM, accuracy, and progress over time.">
+    <title>TypeSpeed Pro - Professional Typing Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">TypeSpeed Pro</span>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-view="test">Test</button>
+                <button class="nav-btn" data-view="games">Games</button> <!-- New Tab -->
+                <button class="nav-btn" data-view="stats">Statistics</button>
+                <button class="nav-btn" data-view="leaderboard">Leaderboard</button>
+            </nav>
+            <div class="auth-controls">
+                <button class="btn btn-secondary btn-small" id="login-btn">Login</button>
+                <button class="btn btn-primary btn-small" id="signup-btn">Sign Up</button>
+                <div id="user-display" style="display: none;">
+                    <span id="username-span"></span>
+                    <button class="btn btn-secondary btn-small" id="logout-btn">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+
+            <!-- Test View -->
+            <div class="view active" id="test-view">
+                <!-- Settings Panel -->
+                <div class="settings-panel">
+                    <div class="setting-group">
+                        <label>Difficulty</label>
+                        <div class="button-group">
+                            <button class="setting-btn active" data-difficulty="easy">Easy</button>
+                            <button class="setting-btn" data-difficulty="medium">Medium</button>
+                            <button class="setting-btn" data-difficulty="hard">Hard</button>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <label>Duration</label>
+                        <div class="button-group">
+                            <button class="setting-btn" data-duration="30">30s</button>
+                            <button class="setting-btn active" data-duration="60">60s</button>
+                            <button class="setting-btn" data-duration="120">120s</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typing Test Area -->
+                <div class="test-container">
+                    <div class="test-header">
+                        <div class="timer-display">
+                            <span class="timer-icon">⏱️</span>
+                            <span id="timer">60</span>s
+                        </div>
+                        <div class="live-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">WPM</span>
+                                <span class="stat-value" id="live-wpm">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Accuracy</span>
+                                <span class="stat-value" id="live-accuracy">100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-display" id="text-display">
+                        <div class="loading">Loading text...</div>
+                    </div>
+
+                    <div class="input-area">
+                        <input type="text" id="typing-input" class="typing-input"
+                            placeholder="Click here and start typing..." autocomplete="off" autocorrect="off"
+                            autocapitalize="off" spellcheck="false">
+                    </div>
+
+                    <div class="test-actions">
+                        <button class="btn btn-primary" id="restart-btn">
+                            <span>↻</span> Restart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Games View -->
+            <div class="view" id="games-view">
+                <h2 class="view-title">Typing Games</h2>
+                <div class="games-grid">
+                    <!-- Falling Words Game Card -->
+                    <div class="game-card">
+                        <div class="game-icon">🌠</div>
+                        <h3>Skyfall</h3>
+                        <p>Type the words before they hit the ground!</p>
+                        <button class="btn btn-primary" id="start-skyfall-btn">Play Now</button>
+                    </div>
+                    <!-- Placeholder for more games -->
+                    <div class="game-card coming-soon">
+                        <div class="game-icon">🏎️</div>
+                        <h3>Type Racer</h3>
+                        <p>Coming Soon...</p>
+                    </div>
+                </div>
+
+                <!-- Game Container (Hidden by default) -->
+                <div id="game-arena" style="display: none;">
+                    <div class="game-hud">
+                        <div class="score">Score: <span id="game-score">0</span></div>
+                        <button class="btn btn-secondary btn-small" id="exit-game-btn">Exit User</button>
+                    </div>
+                    <div id="skyfall-canvas" class="game-canvas">
+                        <!-- Words will spawn here -->
+                    </div>
+                    <input type="text" id="game-input" class="game-input" placeholder="Type falling words..."
+                        autocomplete="off">
+                </div>
+            </div>
+
+            <!-- Statistics View -->
+            <div class="view" id="stats-view">
+                <h2 class="view-title">Your Statistics</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon">📊</div>
+                        <div class="stat-card-label">Total Tests</div>
+                        <div class="stat-card-value" id="total-tests">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">⚡</div>
+                        <div class="stat-card-label">Average WPM</div>
+                        <div class="stat-card-value" id="avg-wpm">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">🏆</div>
+                        <div class="stat-card-label">Best WPM</div>
+                        <div class="stat-card-value" id="best-wpm">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">🎯</div>
+                        <div class="stat-card-label">Avg Accuracy</div>
+                        <div class="stat-card-value" id="avg-accuracy">0%</div>
+                    </div>
+                </div>
+
+                <div class="history-section">
+                    <h3 class="section-title">Recent Tests</h3>
+                    <div class="history-list" id="history-list">
+                        <div class="empty-state">No tests completed yet. Start typing to see your results here!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard View -->
+            <div class="view" id="leaderboard-view">
+                <div class="leaderboard-header">
+                    <h2 class="view-title">Leaderboards</h2>
+                    <div class="button-group">
+                        <button class="setting-btn active" id="lb-type-test">Typing Test</button>
+                        <button class="setting-btn" id="lb-type-game">Skyfall Game</button>
+                    </div>
+                </div>
+
+                <div class="leaderboard-container">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr id="lb-headers">
+                                <!-- Dynamically populated -->
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <tr>
+                                <td colspan="6" class="empty-state">Loading leaderboard...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Results Modal -->
+    <div class="modal" id="results-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">✕</button>
+            <h2 class="modal-title">Test Complete! 🎉</h2>
+
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-label">Words Per Minute</div>
+                    <div class="result-value primary" id="result-wpm">0</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Accuracy</div>
+                    <div class="result-value secondary" id="result-accuracy">0%</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Correct Characters</div>
+                    <div class="result-value" id="result-correct">0</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">Incorrect Characters</div>
+                    <div class="result-value" id="result-incorrect">0</div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-primary btn-large" id="try-again-btn">Try Again</button>
+                <button class="btn btn-secondary btn-large" id="view-stats-btn">View Statistics</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUTH MODALS -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content auth-content">
+            <button class="modal-close" id="auth-close">✕</button>
+            <h2 class="modal-title" id="auth-title">Login</h2>
+            <form id="auth-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="auth-email" required>
+                </div>
+                <div class="form-group" id="username-group" style="display:none;">
+                    <label>Username</label>
+                    <input type="text" id="auth-username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="auth-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit</button>
+            </form>
+            <p class="auth-switch">Don't have an account? <a href="#" id="switch-auth">Sign Up</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="game.js"></script> <!-- Game Logic -->
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{
+    "easy": [
+        "The quick brown fox jumps over the lazy dog.",
+        "A journey of a thousand miles begins with a single step.",
+        "Actions speak louder than words.",
+        "Better late than never.",
+        "Every cloud has a silver lining.",
+        "Time is money and money is time.",
+        "Practice makes perfect, so keep trying.",
+        "Where there is a will, there is a way.",
+        "The early bird catches the worm.",
+        "Knowledge is power in this modern world.",
+        "Life is what happens when you are busy making other plans.",
+        "Success is not final, failure is not fatal.",
+        "Dream big and dare to fail along the way.",
+        "Happiness depends upon ourselves and our actions.",
+        "The best time to plant a tree was yesterday."
+    ],
+    "medium": [
+        "Programming is the art of telling another human being what one wants the computer to do. It requires patience, logic, and creative problem-solving skills that develop over time with practice.",
+        "The future belongs to those who believe in the beauty of their dreams and work tirelessly to achieve them. Success comes from dedication, perseverance, and maintaining a positive mindset.",
+        "Technology has revolutionized the way we communicate, work, and live our daily lives. From smartphones to artificial intelligence, innovation continues to shape our world in unprecedented ways.",
+        "Learning to type efficiently can significantly improve your productivity and save valuable time. The ability to touch type without looking at the keyboard is a skill worth developing.",
+        "Climate change represents one of the greatest challenges facing humanity today. Sustainable practices and renewable energy sources are essential for protecting our planet for future generations.",
+        "Education is the most powerful weapon which you can use to change the world. It opens doors to opportunities and empowers individuals to reach their full potential in life.",
+        "The internet has transformed information access, making knowledge available to anyone with a connection. However, this also requires critical thinking to distinguish reliable sources from misinformation.",
+        "Effective communication involves not just speaking clearly, but also listening attentively to understand different perspectives. Empathy and respect are fundamental to meaningful conversations."
+    ],
+    "hard": [
+        "The implementation of sophisticated algorithms in modern computational systems necessitates an intricate understanding of data structures, complexity analysis, and optimization techniques. Developers must consider scalability, maintainability, and performance characteristics when architecting robust solutions.",
+        "Quantum mechanics fundamentally challenges our classical intuitions about reality, introducing concepts such as superposition, entanglement, and wave-particle duality. These phenomena, while counterintuitive, have been experimentally verified and form the foundation of emerging quantum technologies.",
+        "Neuroplasticity refers to the brain's remarkable ability to reorganize itself by forming new neural connections throughout life. This phenomenon enables learning, memory formation, and recovery from brain injuries, demonstrating the extraordinary adaptability of the human nervous system.",
+        "Cryptocurrency and blockchain technology represent paradigm shifts in how we conceptualize digital assets and decentralized trust. The cryptographic principles underlying these systems enable peer-to-peer transactions without intermediaries, though regulatory and scalability challenges remain.",
+        "The anthropogenic impact on biodiversity has precipitated what many scientists characterize as the sixth mass extinction event. Habitat destruction, pollution, climate change, and overexploitation of resources threaten ecosystems worldwide, necessitating urgent conservation efforts.",
+        "Epistemological considerations regarding the nature of knowledge and justified belief have occupied philosophers for millennia. Questions about the reliability of sensory perception, the validity of inductive reasoning, and the possibility of certain knowledge continue to challenge our understanding.",
+        "The development of artificial general intelligence remains one of the most ambitious and controversial goals in computer science. Proponents envision transformative benefits for humanity, while critics warn of existential risks associated with superintelligent systems beyond human control.",
+        "Macroeconomic policies encompassing fiscal stimulus, monetary interventions, and regulatory frameworks significantly influence employment rates, inflation dynamics, and economic growth trajectories. Policymakers must navigate complex trade-offs between competing objectives in heterogeneous economic environments."
+    ]
+}
