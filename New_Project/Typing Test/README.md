@@ -20,7 +20,7 @@ A fully functional, professional typing test application with real-time statisti
 
 2. **Navigate to project directory**
    ```bash
-   cd "C:\Users\pande\OneDrive\Documents\Python\New_Project\Typing Test"
+   cd "C:\User-to-path-of-Folder"
    ```
 
 3. **Install dependencies**
